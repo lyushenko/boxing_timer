@@ -1,9 +1,10 @@
-import 'package:boxing_timer/screens/done.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import '../models/workout.dart';
+import '../services/audio.dart';
 import '../widgets/countdown.dart';
-import '../widgets/audio.dart';
+import '../screens/done.dart';
 
 enum WorkoutPhase { prepare, work, rest }
 
@@ -24,6 +25,7 @@ class _TimerScreenState extends State<TimerScreen> {
   @override
   void initState() {
     audio = Audio();
+
     activePhase = widget.workout.shouldPrepare()
         ? WorkoutPhase.prepare
         : WorkoutPhase.work;
@@ -40,7 +42,7 @@ class _TimerScreenState extends State<TimerScreen> {
   nextPhase() {
     if (activePhase == WorkoutPhase.work &&
         currentRound == widget.workout.numOfRounds) {
-      audio.start('ring_bell3.wav');
+      audio.play(Audio.RING_BELL_3);
       Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(
@@ -98,7 +100,7 @@ class _TimerScreenState extends State<TimerScreen> {
         subtitle: '',
         color: Colors.amber,
         onComplete: () {
-          audio.start('ring_bell1.wav');
+          audio.play(Audio.RING_BELL_1);
           this.nextPhase();
         },
       );
@@ -112,7 +114,7 @@ class _TimerScreenState extends State<TimerScreen> {
         subtitle: "Round $currentRound of ${widget.workout.numOfRounds}",
         color: Colors.blue,
         onComplete: () {
-          audio.start('ring_bell2.wav');
+          audio.play(Audio.RING_BELL_2);
           this.nextPhase();
         },
       );
@@ -126,7 +128,7 @@ class _TimerScreenState extends State<TimerScreen> {
         subtitle: "Time left ${_timeLeft()}",
         color: Colors.green,
         onComplete: () {
-          audio.start('ring_bell1.wav');
+          audio.play(Audio.RING_BELL_1);
           this.nextPhase();
         },
       );

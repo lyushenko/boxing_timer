@@ -18,7 +18,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.9.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -27,7 +27,7 @@ dependencies:
   flutter_picker:
     git: git://github.com/yangyxd/flutter_picker.git
   percent_indicator: ^2.1.6
-  audioplayers: ^0.16.1
+  soundpool: ^1.1.2
 
 dev_dependencies:
   flutter_launcher_icons: ^0.8.0

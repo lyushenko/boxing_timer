@@ -41,8 +41,7 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen>
-    with TickerProviderStateMixin {
-  // TODO: swap with SingleTickerProviderStateMixin?
+    with SingleTickerProviderStateMixin {
   AnimationController _animationController;
   Animation<int> _characterCount;
   String _currentString = 'Minimalist Boxing Timer';
